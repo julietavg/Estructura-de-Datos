@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+-<project>
+
+
+-<target name="build">
+
+<mkdir dir="build/classes"/>
+
+<javac debuglevel="lines,vars,source" debug="true" destdir="build/classes" srcdir="src"/>
+
+</target>
+
+
+-<target name="jar">
+
+<antcall target="build"/>
+
+<mkdir dir="build/jar"/>
+
+
+-<jar basedir="build/classes" destfile="build/jar/Main.jar">
+
+
+-<manifest>
+
+<attribute name="DependencyFinder" value="main"/>
+
+<attribute name="Main-Class" value="Main"/>
+
+</manifest>
+
+</jar>
+
+</target>
+
+
+-<target name="run">
+
+<java fork="true" jar="build/jar/Main.jar"/>
+
+</target>
+
+
+-<target name="clean">
+
+<delete dir="build"/>
+
+<delete dir="docs"/>
+
+</target>
+
+
+-<target name="docs">
+
+<mkdir dir="docs"/>
+
+
+-<javadoc destdir="docs" version="true" doctitle="Practica02" windowtitle="Practica02" author="true" sourcepath="src/classes/" encoding="UTF-8">
+
+
+-<fileset dir="src" defaultexcludes="yes">
+
+<include name="**/*.java"/>
+
+</fileset>
+
+</javadoc>
+
+</target>
+
+</project>
